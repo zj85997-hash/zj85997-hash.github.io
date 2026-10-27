@@ -58,7 +58,7 @@ PROJECTS = [
         'title': 'AI 家庭智能体模板包', 'sub': '家长课 · 开源 Prompt 模板',
         'text': '亲子沟通翻译官、家庭学习教练、成长规划师：完整 Prompt 加填好的示例知识库，复制粘贴就能用。',
         'tags': ['Prompt', '扣子 Coze', '智谱清言', '家长课'],
-        'demo': PAGES + '/family-ai-agents-prompts/', 'repo': GH + '/family-ai-agents-prompts',
+        'demo': PAGES + '/family-ai-agents/', 'repo': GH + '/family-ai-agents',
         'lead': '3 个家庭 AI 助手，每个都配完整的系统提示词和一份填好的示例知识库。这是《AI 家庭智能体搭建实战营》的课后资料包。',
         'facts': [('智能体', '3 个'), ('课程版本', '2 小时 · 2 天'), ('平台', '扣子 · 智谱清言 · 豆包'), ('许可', 'CC BY-NC-SA 4.0')],
         'highlights': [
@@ -72,7 +72,7 @@ PROJECTS = [
             '课上讲的 Prompt 都是片段，知识库也只给了模板，家长回家很难自己补齐。所以我把最后一步做完：每个 Agent 都配一套完整 Prompt 和一份填好的示范知识库。',
             '它是 2 小时手机版和 2 天版两门家长课的课后资料，课程框架一起开源。方法论就三条：CMRL 写人设，BISCO 做设计，以及「家庭效果 = 认知 × 工具 × 陪伴」，任何一项为零，结果就是零。',
         ],
-        'source': ('zj85997-hash/family-ai-agents-prompts', 'CC BY-NC-SA 4.0 · 可署名使用和改编，不可商用'),
+        'source': ('zj85997-hash/family-ai-agents', 'CC BY-NC-SA 4.0 · 可署名使用和改编，不可商用'),
     },
     {
         'slug': 'meeting-attendance-skill', 'kind': 'public', 'year': '2026', 'home': True, 'icon': 'calendar',
@@ -212,10 +212,10 @@ PROJECTS = [
 SITES = [
     {'name': '家长版 · 一键复制', 'sub': '网页工具', 'icon': 'copy', 'home': True,
      'text': '浏览器打开，点「复制」，把三个家庭智能体粘进扣子、智谱清言、豆包。',
-     'url': PAGES + '/family-ai-agents-prompts/web/家长版-一键复制.html', 'domain': 'family-ai-agents-prompts/web/家长版'},
+     'url': PAGES + '/family-ai-agents/web/家长版-一键复制.html', 'domain': 'family-ai-agents/web/家长版'},
     {'name': '亲子沟通翻译官', 'sub': '网页工具 · 自带 Key', 'icon': 'message', 'home': True,
      'text': '填上自己的 DeepSeek 或兼容接口的 Key，直接和翻译官对话，Key 只存在浏览器里。',
-     'url': PAGES + '/family-ai-agents-prompts/web/翻译官-可对话版.html', 'domain': 'family-ai-agents-prompts/web/翻译官'},
+     'url': PAGES + '/family-ai-agents/web/翻译官-可对话版.html', 'domain': 'family-ai-agents/web/翻译官'},
     {'name': '腾讯会议考勤 Skill', 'sub': '项目主页', 'icon': 'calendar', 'home': True,
      'text': '日报和周报长什么样、30 秒试跑命令，都在这一页。',
      'url': PAGES + '/tencent-meeting-attendance-skill/', 'domain': 'zj85997-hash.github.io/tencent-meeting-…'},
@@ -224,7 +224,7 @@ SITES = [
      'url': PAGES + '/obsidian-second-brain-pipeline/', 'domain': 'zj85997-hash.github.io/obsidian-second-…'},
     {'name': 'AI 家庭智能体模板包', 'sub': '项目主页', 'icon': 'users', 'home': False,
      'text': '三个家庭 AI 助手的介绍页，网页工具的入口也在这里。',
-     'url': PAGES + '/family-ai-agents-prompts/', 'domain': 'zj85997-hash.github.io/family-ai-agents-…'},
+     'url': PAGES + '/family-ai-agents/', 'domain': 'zj85997-hash.github.io/family-ai-agents'},
 ]
 
 # ---------------------------------------------------------------- 联系
