@@ -307,6 +307,7 @@ html[data-theme="dark"] .avatar { background: linear-gradient(145deg, #2a2a31 0%
 .contact-item.no-copy { padding-right: 16px; }
 .contact-item .i { width: 16px; height: 16px; }
 .contact-item .val.todo { color: var(--text-3); }
+.contact-item .k { color: var(--text-3); font-size: 13px; }
 .copy-btn { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line-soft); background: var(--panel-inset); color: var(--text-3); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
 .copy-btn:hover { color: var(--text); }
 .copy-btn .i { width: 14px; height: 14px; }

@@ -230,12 +230,12 @@ SITES = [
 # ---------------------------------------------------------------- 联系
 CONTACT = [
     ('联系方式', [
-        {'icon': 'message', 'label': '微信', 'value': '【待补】', 'copy': False},
-        {'icon': 'mail', 'label': '邮箱', 'value': '【待补】', 'copy': False},
+        {'icon': 'message', 'label': '微信', 'value': 'wuweizhijing002', 'copy': True},
+        {'icon': 'mail', 'label': '邮箱', 'value': 'zj85997@gmail.com', 'copy': True},
     ]),
     ('主页与社区', [
         {'icon': 'github', 'label': 'GitHub', 'value': 'zj85997-hash', 'url': GH},
-        {'icon': 'pen', 'label': '公众号 / 小红书', 'value': '【待补】'},
+        {'icon': 'video', 'label': '视频号', 'value': 'AI实操付老师', 'copy': True},
     ]),
 ]
 
@@ -337,6 +337,7 @@ ICONS = {
     'calendar': '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h3M8 17h6"/>',
     'briefcase': '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"/><path d="M3 12.5h18"/>',
     'route': '<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7.5a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7H16"/>',
+    'video': '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/>',
     'code': '<path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/>',
 }
 GITHUB_MARK = ('<svg class="i fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 '
@@ -524,7 +525,7 @@ def build_home():
         for c in items:
             val = esc(c.get('value', ''))
             todo = '【' in c.get('value', '')
-            inner = '%s<span>%s</span><span class="val%s">%s</span>' % (icon(c['icon']), esc(c['label']) + '：' if todo else '', ' todo' if todo else '', val)
+            inner = '%s<span class="k">%s</span><span class="val%s">%s</span>' % (icon(c['icon']), esc(c['label']), ' todo' if todo else '', val)
             if c.get('url'):
                 row.append('<a class="contact-item no-copy" href="%s" target="_blank" rel="noopener">%s</a>' % (c['url'], inner))
             elif c.get('copy') and not todo:
