@@ -54,6 +54,27 @@ COURSES = [
 # ---------------------------------------------------------------- 项目
 PROJECTS = [
     {
+        'slug': 'inflow-fde', 'kind': 'public', 'year': '2026', 'home': True, 'icon': 'cpu',
+        'title': 'InFlow FDE 企业 AI 转型操盘台', 'sub': '多 Agent 中台 · 在线演示',
+        'text': '总指挥分活、数字员工干活：数字由代码算，退款、结算这类动钱的动作进审批收件箱，每一分 AI 成本都记账。',
+        'tags': ['多 Agent', '人机协同', 'DeepSeek', 'Next.js'],
+        'demo': PAGES + '/inflow-fde/', 'repo': GH + '/inflow-fde',
+        'lead': '给 FDE（驻场 AI 工程师）用的操盘台：诊断企业的工作流，装配一支 Agent 队伍，让它在人的把关下干活。原型由团队伙伴开发，经原作者同意，我改名为 InFlow FDE，接着做完并开源。',
+        'facts': [('Agent', '总指挥 + 4 部门 + 4 数字员工'), ('演示数据', '3 店铺 · 408 笔订单'), ('页面', '11 个'), ('测试', '18 个')],
+        'highlights': [
+            '三层分发：老板对总指挥说一句话，任务分到部门、派给数字员工，分派过程和流式产出实时可见。',
+            '规矩交给知识库记，算数交给代码算：利润、亏损单、投放漏斗都由代码从订单逐笔算出，模型只负责写结论。',
+            '动钱的动作人拍板：退款、结算、预算、改价只进审批收件箱，批准或驳回都写进操作留痕。',
+            '成本可解释：每次模型调用逐笔记账、按 Agent 归因；超过每日预算，网关直接拦截。',
+            '同一套编排核心跑在服务端（Fastify + SQLite）和浏览器里：没有 Key 就用离线演示模型，在线演示和本地部署算出的数一模一样。',
+        ],
+        'story': [
+            '原型 AI-FDE-tool 已经搭好 monorepo、DeepSeek 网关、成本账本和中台页面。我接手后先把编排抽成服务端和浏览器共用的核心，再补上 4 个数字员工的技能、审批收件箱、预算护栏、设置页和命令行。',
+            '演示用一家虚构的三店铺跨境电商，其中一家毛利率最高却在亏钱。利润分析师查出钱漏在达人佣金、投流和退款，提出扣回退款订单上的佣金，等人批准。',
+        ],
+        'source': ('zj85997-hash/inflow-fde', 'MIT · 18 个测试 · GitHub Actions 自动发布'),
+    },
+    {
         'slug': 'family-ai-agents', 'kind': 'public', 'year': '2026', 'home': True, 'icon': 'users',
         'title': 'AI 家庭智能体模板包', 'sub': '家长课 · 开源 Prompt 模板',
         'text': '亲子沟通翻译官、家庭学习教练、成长规划师：完整 Prompt 加填好的示例知识库，复制粘贴就能用。',
@@ -96,7 +117,7 @@ PROJECTS = [
         'source': ('zj85997-hash/tencent-meeting-attendance-skill', 'MIT · 16 个测试 · 零第三方依赖'),
     },
     {
-        'slug': 'second-brain-pipeline', 'kind': 'public', 'year': '2026', 'home': True, 'icon': 'layers',
+        'slug': 'second-brain-pipeline', 'kind': 'public', 'year': '2026', 'home': False, 'icon': 'layers',
         'title': '第二大脑汇聚管线', 'sub': 'Obsidian · 知识管理',
         'text': '得到、钉钉、飞书、备忘录的笔记汇进 Obsidian，自动分类、自动建目录，一键把真名换成代号。',
         'tags': ['Python', 'Obsidian', '飞书', '钉钉'],
@@ -213,6 +234,9 @@ PROJECTS = [
 
 # ---------------------------------------------------------------- 网站
 SITES = [
+    {'name': 'InFlow FDE 操盘台', 'sub': '在线演示 · 多 Agent', 'icon': 'cpu', 'home': True,
+     'text': '对总指挥说一句话，看任务分到部门、数字员工出报告，再去审批收件箱拍板。',
+     'url': PAGES + '/inflow-fde/', 'domain': 'zj85997-hash.github.io/inflow-fde'},
     {'name': '潮玩 AI 运营中台', 'sub': '演示站 · 8 个 Agent', 'icon': 'trophy', 'home': True,
      'text': '黑客松第一名作品的纯前端复刻：社群风控、补偿决策、组箱定价，打开就能试。',
      'url': PAGES + '/chaowan-ai-ops-hub/', 'domain': 'zj85997-hash.github.io/chaowan-ai-ops-hub'},
