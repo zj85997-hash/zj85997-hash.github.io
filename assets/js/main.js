@@ -196,4 +196,72 @@
       if (e.key === 'Enter') { run(input.value); input.value = ''; }
     });
   }
+  /* ---------- 现场：视频进入视野才加载和播放；点开看大图，左右键翻页 ---------- */
+  var tiles = Array.prototype.slice.call(document.querySelectorAll('.tile'));
+  if (tiles.length) {
+    var tileVideos = document.querySelectorAll('.tile video[data-src]');
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      var vo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          var v = en.target;
+          if (en.isIntersecting) {
+            if (!v.getAttribute('src')) v.src = v.getAttribute('data-src');
+            var pr = v.play();
+            if (pr && pr.catch) pr.catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.5 });
+      tileVideos.forEach(function (v) { vo.observe(v); });
+    }
+    var dlg = document.querySelector('.lightbox');
+    if (dlg && typeof dlg.showModal === 'function') {
+      var lbImg = dlg.querySelector('.lb-img'), lbVid = dlg.querySelector('.lb-video');
+      var lbCap = dlg.querySelector('.lb-cap'), lbCnt = dlg.querySelector('.lb-count');
+      var lbList = [], lbCur = 0;
+      var lbShow = function (i) {
+        lbCur = (i + lbList.length) % lbList.length;
+        var t = lbList[lbCur], isVideo = t.getAttribute('data-type') === 'video';
+        lbImg.hidden = isVideo;
+        lbVid.hidden = !isVideo;
+        if (isVideo) {
+          lbImg.removeAttribute('src');
+          lbVid.poster = t.getAttribute('data-poster');
+          lbVid.src = t.getAttribute('data-full');
+          var pr = lbVid.play();
+          if (pr && pr.catch) pr.catch(function () {});
+        } else {
+          lbVid.pause();
+          lbVid.removeAttribute('src');
+          lbImg.src = t.getAttribute('data-full');
+          lbImg.alt = t.getAttribute('data-cap');
+        }
+        lbCap.textContent = t.getAttribute('data-cap');
+        lbCnt.textContent = (lbCur + 1) + ' / ' + lbList.length;
+      };
+      tiles.forEach(function (t) {
+        t.addEventListener('click', function () {
+          lbList = tiles.filter(function (x) { return x.offsetParent !== null; });
+          lbShow(Math.max(0, lbList.indexOf(t)));
+          dlg.showModal();
+        });
+      });
+      dlg.querySelector('.lb-prev').addEventListener('click', function () { lbShow(lbCur - 1); });
+      dlg.querySelector('.lb-next').addEventListener('click', function () { lbShow(lbCur + 1); });
+      dlg.querySelector('.lb-close').addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener('close', function () { lbVid.pause(); });
+      document.addEventListener('keydown', function (e) {
+        if (!dlg.open) return;
+        if (e.key === 'ArrowLeft') lbShow(lbCur - 1);
+        if (e.key === 'ArrowRight') lbShow(lbCur + 1);
+      });
+    } else {
+      // 不支持 dialog 的老浏览器：直接新窗口打开原图或视频
+      tiles.forEach(function (t) {
+        t.addEventListener('click', function () { window.open(t.getAttribute('data-full'), '_blank'); });
+      });
+    }
+  }
 })();

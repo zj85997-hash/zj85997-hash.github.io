@@ -257,6 +257,51 @@ SITES = [
      'url': PAGES + '/family-ai-agents/', 'domain': 'zj85997-hash.github.io/family-ai-agents'},
 ]
 
+# ---------------------------------------------------------------- 现场
+# 照片截自课程录像，视频去掉了声音。只选讲台和全场视角：不放观众特写，不放未成年人。
+# 每一项：(文件名, 说明, 版式)。文件在 assets/gallery/，-s 结尾的是缩略图；文件名以 -v数字 结尾的是视频。
+# 版式：big 占 2×2，wide 占 2×1，tall 占 1×2，空字符串占 1×1。
+GALLERY = [
+    {
+        'id': 'incubator', 'date': '2026.09', 'role': '主讲', 'title': '主理人孵化计划 · 第一期',
+        'topic': '《AI 新商业：时代的确定性机遇》',
+        'desc': '第一期的开场课：企业怎么用 AI 做新增长，个人怎么做新生意；再讲 FDE 怎么进企业，把散在各处的经验变成能复用的数字员工。',
+        'items': [
+            ('2026-09-incubator-01', '开场：AI 新商业，时代的确定性机遇', 'big'),
+            ('2026-09-incubator-v1', '讲「企业新增长 · 个人新生意」', 'wide'),
+            ('2026-09-incubator-02', '讲台边：让 AI 成为企业经营基础设施', ''),
+            ('2026-09-incubator-05', '讲 FDE 怎么进企业做落地', ''),
+            ('2026-09-incubator-03', '现场举手互动', 'wide'),
+            ('2026-09-incubator-v2', '全场举手', ''),
+            ('2026-09-incubator-07', '传统经营方式：公司的经验散在各处', ''),
+            ('2026-09-incubator-04', '全场视角', 'wide'),
+            ('2026-09-incubator-06', '入企业做 FDE：案例拆解', ''),
+            ('2026-09-incubator-08', '资料、规则、起步点：经验散在三个地方', ''),
+        ],
+    },
+    {
+        'id': 'transform', 'date': '2026.10', 'role': '主讲', 'title': '企业 AI 转型分享会',
+        'topic': '《企业 AI 化转型》',
+        'desc': '给企业老板讲 AI 转型：从智能工厂、黑灯工厂讲到「人走了，数字员工继续干活」，最后落到自己公司先改哪一步。',
+        'items': [
+            ('2026-10-transform-04', '人走了，数字员工继续干活', 'big'),
+            ('2026-10-transform-01', '开场：企业 AI 化转型', 'tall'),
+            ('2026-10-transform-v1', '讲数字员工', ''),
+            ('2026-10-transform-02', '智能工厂的生产现场', 'wide'),
+            ('2026-10-transform-03', '黑灯工厂：每 1 秒下线一部手机', ''),
+            ('2026-10-transform-v2', '讲智能工厂', ''),
+            ('2026-10-transform-05', '中国城市 AI 发展格局', ''),
+        ],
+    },
+]
+# 首页只放 7 格，拼成 4 列 × 3 行
+HOME_GALLERY = [
+    ('incubator', '2026-09-incubator-01', 'big'), ('transform', '2026-10-transform-04', 'wide'),
+    ('incubator', '2026-09-incubator-v2', ''), ('transform', '2026-10-transform-02', ''),
+    ('incubator', '2026-09-incubator-03', 'wide'), ('transform', '2026-10-transform-v2', ''),
+    ('incubator', '2026-09-incubator-05', ''),
+]
+
 # ---------------------------------------------------------------- 联系
 CONTACT = [
     ('联系方式', [
@@ -369,6 +414,9 @@ ICONS = {
     'route': '<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7.5a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7H16"/>',
     'video': '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/>',
     'code': '<path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/>',
+    'camera': '<path d="M4 8.5h3.2L9 6h6l1.8 2.5H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/>',
+    'play': '<path d="M8.5 5.8v12.4L19 12z"/>',
+    'x': '<path d="M6 6l12 12"/><path d="M18 6L6 18"/>',
 }
 GITHUB_MARK = ('<svg class="i fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 '
                '0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 '
@@ -412,7 +460,7 @@ def avatar_html(p):
 
 # ---------------------------------------------------------------- 页面骨架
 def nav(p, active):
-    items = [('home', '首页', 'index.html'), ('grid', '项目', 'projects/index.html'),
+    items = [('home', '首页', 'index.html'), ('grid', '项目', 'projects/index.html'), ('camera', '现场', 'gallery/index.html'),
              ('globe', '网站', 'sites/index.html'), ('pen', '博客', 'blog/index.html')]
     links = ''.join('<a href="%s%s"%s>%s<span>%s</span></a>' % (
         p, href, ' class="active" aria-current="page"' if label == active else '', icon(ic), label) for ic, label, href in items)
@@ -508,6 +556,40 @@ def more_btn(href, text):
     return '<a class="btn btn-more" href="%s">%s%s</a>' % (href, text, icon('chev'))
 
 
+def gallery_event(eid):
+    return next(e for e in GALLERY if e['id'] == eid)
+
+
+def gallery_tile(event, slug, cap, span, p):
+    g = p + 'assets/gallery/'
+    label = '%s · %s' % (event['title'], cap)
+    cls = ('tile ' + span).strip()
+    if re.search(r'-v\d+$', slug):
+        return ('<button class="%s is-video" type="button" data-type="video" data-full="%s%s.mp4" data-poster="%s%s.jpg" data-cap="%s" aria-label="播放视频：%s">'
+                '<video muted loop playsinline preload="none" poster="%s%s-s.jpg" data-src="%s%s.mp4" aria-hidden="true"></video>'
+                '<span class="play-badge">%s</span><span class="tile-cap">%s</span></button>'
+                ) % (cls, g, slug, g, slug, esc(label), esc(cap), g, slug, g, slug, icon('play', 'fill'), esc(cap))
+    return ('<button class="%s" type="button" data-type="img" data-full="%s%s.jpg" data-cap="%s" aria-label="看大图：%s">'
+            '<img src="%s%s-s.jpg" alt="%s" loading="lazy" decoding="async"><span class="tile-cap">%s</span></button>'
+            ) % (cls, g, slug, esc(label), esc(cap), g, slug, esc(cap), esc(cap))
+
+
+def lightbox():
+    return ('<dialog class="lightbox" aria-label="大图浏览"><figure class="lb-stage"><img class="lb-img" alt="">'
+            '<video class="lb-video" muted loop playsinline controls></video></figure>'
+            '<div class="lb-bar"><span class="lb-cap"></span><span class="lb-count"></span></div>'
+            '<button class="lb-btn lb-prev" type="button" aria-label="上一张">%s</button>'
+            '<button class="lb-btn lb-next" type="button" aria-label="下一张">%s</button>'
+            '<button class="lb-btn lb-close" type="button" aria-label="关闭">%s</button></dialog>\n'
+            ) % (icon('arrow-left'), icon('chev'), icon('x'))
+
+
+def gallery_counts():
+    videos = sum(1 for e in GALLERY for it in e['items'] if re.search(r'-v\d+$', it[0]))
+    photos = sum(len(e['items']) for e in GALLERY) - videos
+    return photos, videos
+
+
 # ---------------------------------------------------------------- 首页
 def build_home():
     p = ''
@@ -571,10 +653,16 @@ def build_home():
     body += section('skills', '能力', '02', 'cpu', 'Skills', '能力', '下面这些标签，都来自真正交付过的课程和项目。', skills)
     body += section('work', '项目', '03', 'grid', 'Work', '精选项目',
                     '课程和项目一起算，一共 %d 个：公开的能看演示和源码，客户和团队项目只放简介。' % len(PROJECTS), work)
-    body += section('sites', '网站', '04', 'globe', 'Sites', '我的网站', '长期在线的页面和小工具，点开就能用。', sites)
-    body += section('journal', '文章', '05', 'pen', 'Journal', '最近文章', '项目背后的做法和复盘，写给想自己动手的人。', journal)
-    body += section('contact', '联系', '06', 'mail', 'Contact', '联系我', '企业内训、院校课程共建、营地与家长课、AI 落地陪跑，都可以聊。', contact)
-    after = '<script type="application/json" id="term-data">%s</script>\n' % json.dumps(term_data, ensure_ascii=False).replace('</', '<\\/')
+    photos, videos = gallery_counts()
+    live = '<div class="mosaic home-mosaic reveal">%s</div>%s' % (
+        ''.join(gallery_tile(gallery_event(eid), slug, next(c for s2, c, _ in gallery_event(eid)['items'] if s2 == slug), span, p)
+                for eid, slug, span in HOME_GALLERY), more_btn('gallery/index.html', '全部现场'))
+    body += section('live', '现场', '04', 'camera', 'On Site', '授课现场',
+                    '讲过的课，现场是这样的：%d 场、%d 张照片、%d 段视频，都截自课程录像。点开看大图。' % (len(GALLERY), photos, videos), live)
+    body += section('sites', '网站', '05', 'globe', 'Sites', '我的网站', '长期在线的页面和小工具，点开就能用。', sites)
+    body += section('journal', '文章', '06', 'pen', 'Journal', '最近文章', '项目背后的做法和复盘，写给想自己动手的人。', journal)
+    body += section('contact', '联系', '07', 'mail', 'Contact', '联系我', '企业内训、院校课程共建、营地与家长课、AI 落地陪跑，都可以聊。', contact)
+    after = lightbox() + '<script type="application/json" id="term-data">%s</script>\n' % json.dumps(term_data, ensure_ascii=False).replace('</', '<\\/')
     return page('%s · %s' % (SITE['name'], SITE['role']), SITE['desc'], body, p, '首页', after)
 
 
@@ -623,6 +711,28 @@ def build_project(pr, i):
     pager += ('<a class="glass gx next" href="%s.html"><small>下一个%s</small><b>%s</b></a>' % (next_pr['slug'], icon('chev'), esc(next_pr['title']))) if next_pr else '<span></span>'
     body += pager + '</div>'
     return page('%s · %s' % (pr['title'], SITE['name']), pr['lead'], body, p, '项目')
+
+
+# ---------------------------------------------------------------- 现场
+def build_gallery():
+    p = '../'
+    photos, videos = gallery_counts()
+    filters = '<button type="button" class="on" data-filter="all">全部 <span>%d</span></button>' % len(GALLERY)
+    filters += ''.join('<button type="button" data-filter="%s">%s <span>%s</span></button>' % (e['id'], esc(e['title'].split(' · ')[0]), e['date'])
+                       for e in GALLERY)
+    events = ''
+    for e in GALLERY:
+        nv = sum(1 for it in e['items'] if re.search(r'-v\d+$', it[0]))
+        events += ('<section class="event glass corners reveal" id="%s" data-kind="%s"><div class="event-head">'
+                   '<div class="event-meta"><span class="date">%s</span><span>%s</span><span>%d 张照片 · %d 段视频</span></div>'
+                   '<h2>%s</h2><p class="topic">%s</p><p class="desc">%s</p></div><div class="mosaic">%s</div></section>'
+                   ) % (e['id'], e['id'], e['date'], esc(e['role']), len(e['items']) - nv, nv, esc(e['title']), esc(e['topic']), esc(e['desc']),
+                        ''.join(gallery_tile(e, slug, cap, span, p) for slug, cap, span in e['items']))
+    body = ('<div class="page-head"><a class="back" href="../index.html">%s返回首页</a><h1>授课现场</h1>'
+            '<p class="desc">截自课程录像：%d 场课、%d 张照片、%d 段静音短视频。点开看大图，左右键翻页。更多课程的现场陆续补上。</p></div>'
+            '<div class="filters" role="tablist">%s</div><div class="events">%s</div>'
+            ) % (icon('arrow-left'), len(GALLERY), photos, videos, filters, events)
+    return page('授课现场 · ' + SITE['name'], '付钟浩 Alex 的授课现场：企业 AI 转型分享会、主理人孵化计划等课程的照片和视频。', body, p, '现场', lightbox())
 
 
 # ---------------------------------------------------------------- 网站、文章
@@ -690,7 +800,8 @@ def write(rel, text):
 
 def main():
     out = [write('index.html', build_home()), write('projects/index.html', build_projects_index()),
-           write('sites/index.html', build_sites_index()), write('blog/index.html', build_blog_index()), write('404.html', build_404())]
+           write('gallery/index.html', build_gallery()), write('sites/index.html', build_sites_index()),
+           write('blog/index.html', build_blog_index()), write('404.html', build_404())]
     for i, pr in enumerate(PROJECTS):
         out.append(write('projects/%s.html' % pr['slug'], build_project(pr, i)))
     for post in POSTS:
